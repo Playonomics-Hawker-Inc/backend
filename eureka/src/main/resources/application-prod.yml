@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: eureka
+  security:
+    user:
+      name: playonomics
+      password: playonomics
+
+server:
+  port: 1111
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZoneclear: http://${eureka.instance.hostname}:${server.port}/eureka/
