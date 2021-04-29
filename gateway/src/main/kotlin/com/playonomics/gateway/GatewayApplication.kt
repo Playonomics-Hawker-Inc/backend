@@ -5,6 +5,11 @@ import org.springframework.boot.runApplication
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 
+
+//discovery:
+//locator:
+//enabled: true
+//lower-case-service-id: true
 @EnableEurekaClient
 @EnableDiscoveryClient
 @SpringBootApplication
