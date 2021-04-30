@@ -890,7 +890,7 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^5.7.36":
+"@types/mongoose@^5.10.5", "@types/mongoose@^5.7.36":
   version "5.10.5"
   resolved "https://npmregistry.code-awesome.com/@types%2fmongoose/-/mongoose-5.10.5.tgz#0f4fb0440e8cf0213caec1e5c7b163dbd9847c56"
   integrity sha512-37QMIA954T3n+HSksSNLlxZsqF8fMJu5S4dyPBod6gRxGtsXlQ9jUtL8BE8Seimv99u79eLXI3bggoCnSQ/fxQ==
@@ -4414,6 +4414,24 @@ mongoose@^5.10.11:
     sift "13.5.2"
     sliced "1.0.1"
 
+mongoose@^5.12.7:
+  version "5.12.7"
+  resolved "https://npmregistry.code-awesome.com/mongoose/-/mongoose-5.12.7.tgz#9cbf42246c53b7ab79342c04ef72938d4047b071"
+  integrity sha512-BniNwACn7uflK2h+M3juvyLH5nn9JDFgnB5KE2EwWFwSrRyhSpPnCtanRKJW3OtMCJyPccMIjtGZxHNW7JfnIw==
+  dependencies:
+    "@types/mongodb" "^3.5.27"
+    bson "^1.1.4"
+    kareem "2.3.2"
+    mongodb "3.6.6"
+    mongoose-legacy-pluralize "1.0.2"
+    mpath "0.8.3"
+    mquery "3.2.5"
+    ms "2.1.2"
+    regexp-clone "1.0.0"
+    safe-buffer "5.2.1"
+    sift "13.5.2"
+    sliced "1.0.1"
+
 mpath@0.8.3:
   version "0.8.3"
   resolved "https://npmregistry.code-awesome.com/mpath/-/mpath-0.8.3.tgz#828ac0d187f7f42674839d74921970979abbdd8f"
@@ -4897,6 +4915,21 @@ pkg-dir@^4.2.0:
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
   dependencies:
     find-up "^4.0.0"
+
+playonomics-lib@^1.0.1:
+  version "1.0.1"
+  resolved "https://npmregistry.code-awesome.com/playonomics-lib/-/playonomics-lib-1.0.1.tgz#7252c2484add8dc99f302b26a74b7da3fd03611b"
+  integrity sha512-Z4wk5L4Lf+/8gMpVVDEOAvQl89F0R/gzr0hpCuDRYvgM3mZJJrdwP7JoYPErA1yAMjXfEyQh9itG8ExaTotWbQ==
+  dependencies:
+    "@types/express" "^4.17.11"
+    "@types/ip" "^1.1.0"
+    "@types/mongoose" "^5.10.5"
+    "@types/request" "^2.48.5"
+    express "^4.17.1"
+    ip "^1.1.5"
+    mongoose "^5.12.7"
+    request "^2.88.2"
+    typescript "^4.2.4"
 
 pluralize@8.0.0:
   version "8.0.0"
@@ -6146,7 +6179,7 @@ typescript@4.2.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
   integrity sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
 
-typescript@^4.0.5, typescript@^4.2.3:
+typescript@^4.0.5, typescript@^4.2.3, typescript@^4.2.4:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
   integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==

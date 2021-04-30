@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { registerWithEureka } from 'hawkerfresh';
+import { registerWithEureka } from 'playonomics-lib';
 
 @Injectable()
 export class AppService {

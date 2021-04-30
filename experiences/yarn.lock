@@ -572,7 +572,7 @@
     webpack "5.28.0"
     webpack-node-externals "2.5.2"
 
-"@nestjs/common@^7.0.0", "@nestjs/common@^7.4.4":
+"@nestjs/common@^7.0.0":
   version "7.6.15"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.15.tgz#ae96f18cb6209a21724ffa7ed1a182be1e4fd0af"
   integrity sha512-H/3Nk7M02Fc4YN9St05i34gZKVuzE54gd5eXAX6WwisqU5fQ00kss1pYGbltjb2QGu3A/fpO1MdYEwOA18Z/VQ==
@@ -711,11 +711,6 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/bcryptjs@^2.4.2":
-  version "2.4.2"
-  resolved "https://npmregistry.code-awesome.com/@types%2fbcryptjs/-/bcryptjs-2.4.2.tgz#e3530eac9dd136bfdfb0e43df2c4c5ce1f77dfae"
-  integrity sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==
-
 "@types/body-parser@*":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.19.0.tgz#0685b3c47eb3006ffed117cdd55164b61f80538f"
@@ -788,7 +783,7 @@
     "@types/qs" "*"
     "@types/range-parser" "*"
 
-"@types/express@^4.17.3", "@types/express@^4.17.8":
+"@types/express@^4.17.11", "@types/express@^4.17.3":
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.11.tgz#debe3caa6f8e5fcda96b47bd54e2f40c4ee59545"
   integrity sha512-no+R6rW60JEc59977wIxreQVsIEOAYwgCqldrA/vkpCnbD7MqTefO97lmoBe4WE0F156bC4uLSP1XHDOySnChg==
@@ -870,7 +865,7 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^5.7.36":
+"@types/mongoose@^5.10.5":
   version "5.10.5"
   resolved "https://npmregistry.code-awesome.com/@types%2fmongoose/-/mongoose-5.10.5.tgz#0f4fb0440e8cf0213caec1e5c7b163dbd9847c56"
   integrity sha512-37QMIA954T3n+HSksSNLlxZsqF8fMJu5S4dyPBod6gRxGtsXlQ9jUtL8BE8Seimv99u79eLXI3bggoCnSQ/fxQ==
@@ -3047,26 +3042,6 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hawkerfresh@^1.0.0:
-  version "1.0.0"
-  resolved "https://npmregistry.code-awesome.com/hawkerfresh/-/hawkerfresh-1.0.0.tgz#156f42cf4c90d69d312e46fcc2b53c6f5cb39d60"
-  integrity sha512-srUyJhZmbZaZWBxGFRy2TmJJm5PpB6ldFWaEMgJVOaewTjsoQCkhC6caGUtH5386XPJTRBpTlftvGdgaTUJNSg==
-  dependencies:
-    "@nestjs/common" "^7.4.4"
-    "@types/bcryptjs" "^2.4.2"
-    "@types/express" "^4.17.8"
-    "@types/ip" "^1.1.0"
-    "@types/mongoose" "^5.7.36"
-    "@types/request" "^2.48.5"
-    bcryptjs "^2.4.3"
-    express "^4.17.1"
-    ip "^1.1.5"
-    mongoose "^5.10.11"
-    nestjs "0.0.1"
-    request "^2.88.2"
-    rxjs "^6.6.3"
-    typescript "^4.0.5"
-
 helmet@^4.5.0:
   version "4.5.0"
   resolved "https://npmregistry.code-awesome.com/helmet/-/helmet-4.5.0.tgz#da5a75d30cbd9f60628e9463a85dc7725806c2ea"
@@ -4454,10 +4429,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://npmregistry.code-awesome.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.10.11:
-  version "5.12.6"
-  resolved "https://npmregistry.code-awesome.com/mongoose/-/mongoose-5.12.6.tgz#bbbea1bff149f2ee72cf0efc844a31a92f0546a6"
-  integrity sha512-lNkToNqcfDyHNArPjd/aODTJp/cDhFEZE9Xtj0yBz+Z2t1h6RRDxzxIV0NW12SAnjIh50U1yW6c3rLPqn17lSw==
+mongoose@^5.12.7:
+  version "5.12.7"
+  resolved "https://npmregistry.code-awesome.com/mongoose/-/mongoose-5.12.7.tgz#9cbf42246c53b7ab79342c04ef72938d4047b071"
+  integrity sha512-BniNwACn7uflK2h+M3juvyLH5nn9JDFgnB5KE2EwWFwSrRyhSpPnCtanRKJW3OtMCJyPccMIjtGZxHNW7JfnIw==
   dependencies:
     "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
@@ -4517,23 +4492,9 @@ multer-s3@^2.9.0:
     is-svg "^2.1.0"
     run-parallel "^1.1.6"
 
-multer@1.4.2:
+multer@1.4.2, multer@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/multer/-/multer-1.4.2.tgz#2f1f4d12dbaeeba74cb37e623f234bf4d3d2057a"
-  integrity sha512-xY8pX7V+ybyUpbYMxtjM9KAiD9ixtg5/JkeKUTD6xilfDv0vzzOFcCp4Ljb1UU3tSOM3VTZtKo63OmzOrGi3Cg==
-  dependencies:
-    append-field "^1.0.0"
-    busboy "^0.2.11"
-    concat-stream "^1.5.2"
-    mkdirp "^0.5.1"
-    object-assign "^4.1.1"
-    on-finished "^2.3.0"
-    type-is "^1.6.4"
-    xtend "^4.0.0"
-
-multer@^1.4.2:
-  version "1.4.2"
-  resolved "https://npmregistry.code-awesome.com/multer/-/multer-1.4.2.tgz#2f1f4d12dbaeeba74cb37e623f234bf4d3d2057a"
   integrity sha512-xY8pX7V+ybyUpbYMxtjM9KAiD9ixtg5/JkeKUTD6xilfDv0vzzOFcCp4Ljb1UU3tSOM3VTZtKo63OmzOrGi3Cg==
   dependencies:
     append-field "^1.0.0"
@@ -4581,11 +4542,6 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
-
-nestjs@0.0.1:
-  version "0.0.1"
-  resolved "https://npmregistry.code-awesome.com/nestjs/-/nestjs-0.0.1.tgz#e4b3b82fbbd0bbf993a7c7a137b3ad59ccecf6b6"
-  integrity sha1-5LO4L7vQu/mTp8ehN7OtWczs9rY=
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -5045,6 +5001,21 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
+playonomics-lib@^1.0.1:
+  version "1.0.1"
+  resolved "https://npmregistry.code-awesome.com/playonomics-lib/-/playonomics-lib-1.0.1.tgz#7252c2484add8dc99f302b26a74b7da3fd03611b"
+  integrity sha512-Z4wk5L4Lf+/8gMpVVDEOAvQl89F0R/gzr0hpCuDRYvgM3mZJJrdwP7JoYPErA1yAMjXfEyQh9itG8ExaTotWbQ==
+  dependencies:
+    "@types/express" "^4.17.11"
+    "@types/ip" "^1.1.0"
+    "@types/mongoose" "^5.10.5"
+    "@types/request" "^2.48.5"
+    express "^4.17.1"
+    ip "^1.1.5"
+    mongoose "^5.12.7"
+    request "^2.88.2"
+    typescript "^4.2.4"
+
 pluralize@8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
@@ -5456,7 +5427,7 @@ rxjs@6.6.3:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^6.5.4, rxjs@^6.6.0, rxjs@^6.6.3:
+rxjs@^6.5.4, rxjs@^6.6.0:
   version "6.6.7"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
   integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==
@@ -6342,7 +6313,7 @@ typescript@^3.7.4:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.9.tgz#e69905c54bc0681d0518bd4d587cc6f2d0b1a674"
   integrity sha512-kdMjTiekY+z/ubJCATUPlRDl39vXYiMV9iyeMuEuXZh2we6zz80uovNN2WlAxmmdE/Z/YQe+EbOEXB5RHEED3w==
 
-typescript@^4.0.5:
+typescript@^4.2.4:
   version "4.2.4"
   resolved "https://npmregistry.code-awesome.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
   integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
