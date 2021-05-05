@@ -17,9 +17,8 @@ docker container run -p 1111:1111 -d --rm --name pleureka --network playonomics_
 
 # PROD
 
-docker build -f Dockerfile.production -t hawkerfresh/eureka .
-docker container run -p 1111:1111 -d --rm --name hfeureka --network hawkerfresh_net hawkerfresh/eureka
-
+docker build -f Dockerfile.production -t playonomics/eureka .
+docker container run -p 1111:1111 -d --rm --name hfeureka playonomics/eureka
 
 ## GATEWAY - Gateway Server
 
@@ -30,7 +29,12 @@ docker container run -p 8080:8080 -d --rm --name plgateway --network playonomics
 
 # PROD
 
-docker build -f Dockerfile.production -t hawkerfresh/gatwway .
-docker container run -p 8080:8080 -d --rm --name hfgatwway --network hawkerfresh_net hawkerfresh/gatwway
+docker build -f Dockerfile.production -t playonomics/gateway .
+docker container run -p 8080:8080 -d --rm --name hfgatwway playonomics/gateway
+
+# AUTH
+
+docker build -t playonomics/auth .
+docker container run -p 6006:6006 -d --rm --name plauth playonomics/auth
 
 docker run -it --rm -d --name verdaccio -p 4873:4873 verdaccio/verdaccio

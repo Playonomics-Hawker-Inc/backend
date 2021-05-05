@@ -10,12 +10,12 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: eureka.playonomics-dev.com
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://playonomics:playonomics@pleureka:1111/eureka
+      defaultZone: http://playonomics:playonomics@eureka.playomonics-dev.com:1111/eureka
 
 
 

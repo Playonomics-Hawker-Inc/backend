@@ -11,9 +11,9 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: eureka.playonomics-dev.com
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZoneclear: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZoneclear: http://eureka.playonomics-dev.com:1111/eureka/

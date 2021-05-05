@@ -4,7 +4,11 @@ import { registerWithEureka } from 'playonomics-lib';
 @Injectable()
 export class AppService {
   onApplicationBootstrap() {
-    this.registerWithEurekaDiscovery();
+    if ((process.env.REGISTER_WITH_EUREKA as unknown) as boolean) {
+      this.registerWithEurekaDiscovery();
+    } else {
+      console.log(`REGISTER_WITH_EUREKA set to false, ignoring`);
+    }
   }
 
   private registerWithEurekaDiscovery() {
@@ -16,7 +20,8 @@ export class AppService {
       (process.env.ENABLE_HEART_BEAT as unknown) as boolean,
     );
   }
-  getHello(): string {
-    return 'Hello World!';
+
+  getHealthCheck(): string {
+    return 'Playonomics Auth Services OK!';
   }
 }
