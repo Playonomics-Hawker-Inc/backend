@@ -4,9 +4,12 @@ import { registerWithEureka } from 'playonomics-lib';
 @Injectable()
 export class AppService {
   onApplicationBootstrap() {
-    this.registerWithEurekaDiscovery();
+    if ((process.env.REGISTER_WITH_EUREKA as unknown) as boolean) {
+      this.registerWithEurekaDiscovery();
+    } else {
+      console.log(`REGISTER_WITH_EUREKA set to false, ignoring`);
+    }
   }
-
   private registerWithEurekaDiscovery() {
     registerWithEureka(
       process.env.APP_NAME as string,
