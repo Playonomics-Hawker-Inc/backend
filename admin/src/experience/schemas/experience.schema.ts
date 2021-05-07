@@ -9,10 +9,24 @@ export const ImageSchema = new mongoose.Schema({
   },
 });
 
+export const PriceSchema = new mongoose.Schema({
+  price: Number,
+  currency: {
+    type: String,
+    enum: ['USD', 'INR'],
+    default: 'USD',
+  },
+  symbol: {
+    type: String,
+    enum: ['$', 'Rs'],
+    default: '$',
+  },
+});
+
 export const ExperienceSchema = new mongoose.Schema({
   title: String,
   description: String,
-  currency: String,
+  price: PriceSchema,
   slug: {
     type: String,
     unique: true,

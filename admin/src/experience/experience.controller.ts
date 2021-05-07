@@ -20,6 +20,16 @@ import { AdminGuard } from '../auth/guards/admin.guard';
 export class ExperienceController {
   constructor(private readonly experiencesService: ExperienceService) {}
 
+  @Get()
+  async getAll(@Query() query) {
+    return await this.experiencesService.getAll(query);
+  }
+
+  @Get(':slug')
+  async findOne(@Param('slug') slug: string) {
+    return await this.experiencesService.findOne(slug);
+  }
+
   @Post()
   async createExperience(@Body() dto: ExperienceDto): Promise<Experience> {
     return await this.experiencesService.createExperience(dto);

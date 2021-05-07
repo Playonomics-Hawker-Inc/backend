@@ -2,7 +2,7 @@ export class ExperienceDto {
   id: string;
   title: string;
   description: string;
-  currency: string;
+  price: any;
   status: string;
   slug: string;
   images: [ImageDto];
@@ -11,4 +11,9 @@ export class ExperienceDto {
 export class ImageDto {
   url: string;
   type: string;
+}
+
+export class PriceDto {
+  price: number;
+  currency: string;
 }

@@ -8,6 +8,7 @@ export interface User extends Document {
   admin: boolean;
   email: string;
   type: string;
+  authorities: [string];
   address: string;
   phone: string;
   created: Date;
