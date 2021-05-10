@@ -9,6 +9,7 @@ import { UploadModule } from './image/upload.module';
 import { ExperienceModule } from './experience/experience.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     UploadModule,
     ExperienceModule,
+    CategoryModule,
     UserModule,
     AuthModule,
   ],
