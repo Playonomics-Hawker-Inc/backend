@@ -90,6 +90,7 @@ export class ExperienceService {
           status: 1,
           slug: 1,
           images: 1,
+          theme: 1,
         },
       },
       {

@@ -5,6 +5,7 @@ export class ExperienceDto {
   price: any;
   status: string;
   slug: string;
+  theme: string;
   images: [ImageDto];
 }
 

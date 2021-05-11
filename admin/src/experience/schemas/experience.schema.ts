@@ -38,6 +38,7 @@ export const ExperienceSchema = new mongoose.Schema({
     enum: ['active', 'inactive'],
     default: 'active',
   },
+  theme: String,
   images: [ImageSchema],
 });
 
