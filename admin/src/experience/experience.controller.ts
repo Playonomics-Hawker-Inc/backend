@@ -25,13 +25,35 @@ export class ExperienceController {
     return await this.experiencesService.getAll(query);
   }
 
-  @Get(':slug')
-  async findOne(@Param('slug') slug: string) {
-    return await this.experiencesService.findOne(slug);
-  }
-
   @Post()
   async createExperience(@Body() dto: ExperienceDto): Promise<Experience> {
     return await this.experiencesService.createExperience(dto);
+  }
+
+  /**
+   *
+   * @param query
+   * @returns
+   */
+  @Get('autocomplete')
+  async searchExperienceByTitleAutoComplete(
+    @Query('query') query,
+  ): Promise<Experience[]> {
+    const experiences = await this.experiencesService.searchExperienceByTitleAutoComplete(
+      query,
+    );
+    return experiences;
+  }
+
+  /**
+   * Note : The ordering is different as nestjs search autocomplete won't work is this comes before that
+   * @param slug
+   * @returns
+   */
+  @Get(':slug')
+  async findOne(@Param('slug') slug: string) {
+    console.log('Got slug', slug);
+
+    return await this.experiencesService.findOne(slug);
   }
 }

@@ -31,6 +31,36 @@ export class ExperienceService {
   }
 
   /**
+   *
+   * @param query
+   * @returns
+   */
+
+  async searchExperienceByTitleAutoComplete(
+    query: String,
+  ): Promise<Experience[]> {
+    console.log('Got v', query);
+    return await this.experiencesModel.aggregate([
+      {
+        $search: {
+          autocomplete: {
+            path: 'title',
+            query: query,
+          },
+        },
+      },
+
+      { $limit: 5 },
+      {
+        $project: {
+          title: 1,
+          slug: 1,
+        },
+      },
+    ]);
+  }
+
+  /**
    * Paginate
    * @param matchQuery
    * @param query

@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 
 import { ConfigModule } from '@nestjs/config';
 import { UploadModule } from './image/upload.module';
+import { ImageModule } from './image/image.module';
+
 import { ExperienceModule } from './experience/experience.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
@@ -25,6 +27,7 @@ import { CategoryModule } from './category/category.module';
     CategoryModule,
     UserModule,
     AuthModule,
+    ImageModule,
   ],
   controllers: [AppController],
   providers: [AppService],
