@@ -21,6 +21,17 @@ docker container run -p 1111:1111 -d --rm --name pleureka --network playonomics_
 
 # PROD
 
+# Enironment variables
+
+AWS_EUREKA_HOSTNAME = eureka.playonomics-dev.com
+AWS_EUREKA_PORT = 1111
+AWS_EUREKA_USER = playonomics
+AWS_EUREKA_PASSWORD = playonomics
+
+# Private DNS
+
+    eureka.playonomics-dev.com
+
 docker build -f Dockerfile.production -t playonomics/eureka .
 docker container run -p 1111:1111 -d --rm --name hfeureka playonomics/eureka
 
@@ -36,6 +47,14 @@ docker build -t playonomics/gatwway .
 docker container run -p 8080:8080 -d --rm --name plgateway --network playonomics_net playonomics/gatwway
 
 # PROD - Config
+
+# Enironment variable
+
+AWS_EUREKA_HOSTNAME = eureka.playonomics-dev.com
+AWS_EUREKA_PORT = 1111
+AWS_EUREKA_USER = playonomics
+AWS_EUREKA_PASSWORD = playonomics
+AWS_GATEWAY_PORT = 8080
 
 # Private DNS
 

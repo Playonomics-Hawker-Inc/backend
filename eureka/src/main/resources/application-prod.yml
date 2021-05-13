@@ -3,17 +3,17 @@ spring:
     name: eureka
   security:
     user:
-      name: playonomics
-      password: playonomics
+      name: ${AWS_EUREKA_USER}
+      password: ${AWS_EUREKA_PASSWORD}
 
 server:
-  port: 1111
+  port: ${AWS_EUREKA_PORT}
 
 eureka:
   instance:
-    hostname: eureka.playonomics-dev.com
+    hostname: ${AWS_EUREKA_HOSTNAME}
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZoneclear: http://eureka.playonomics-dev.com:1111/eureka/
+      defaultZoneclear: http://${eureka.instance.hostname}:${server.port}/eureka/
