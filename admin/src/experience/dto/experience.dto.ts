@@ -1,5 +1,5 @@
 export class ExperienceDto {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   price: any;
@@ -7,6 +7,7 @@ export class ExperienceDto {
   slug: string;
   theme: string;
   images: [ImageDto];
+  category: any;
 }
 
 export class ImageDto {

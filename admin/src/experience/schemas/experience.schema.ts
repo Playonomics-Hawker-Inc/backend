@@ -32,6 +32,14 @@ export const ExperienceSchema = new mongoose.Schema({
     unique: true,
     index: true,
   },
+  category: {
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+    },
+    name: String,
+    slug: String,
+  },
   status: {
     type: String,
     required: true,

@@ -7,6 +7,7 @@ export interface Experience extends Document {
   price: any;
   status: string;
   slug: string;
-  theme:string;
+  theme: string;
   images: any[];
+  category: string;
 }

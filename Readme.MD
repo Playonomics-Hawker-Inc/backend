@@ -35,11 +35,11 @@ AWS_EUREKA_PASSWORD = playonomics
 docker build -f Dockerfile.production -t playonomics/eureka .
 docker container run -p 1111:1111 -d --rm --name hfeureka playonomics/eureka
 
-# ** ------------------------------ **
+# ** ------------------------------ ** ------------------------------ \*\*
 
-## GATEWAY - Gateway Server
+## GATEWAY - Gateway Server - START
 
-# ** ------------------------------ **
+# ** ------------------------------ ** ------------------------------ \*\*
 
 # DEV - Config
 
@@ -63,11 +63,31 @@ AWS_GATEWAY_PORT = 8080
 docker build -f Dockerfile.production -t playonomics/gateway .
 docker container run -p 8080:8080 -d --rm --name hfgatwway playonomics/gateway
 
+# ** ------------------------------ ** ------------------------------ \*\*
+
+## GATEWAY - Gateway Server - END
+
+# ** ------------------------------ ** ------------------------------ \*\*
+
 # ** ------------------------------ **
 
 # AUTH
 
 # ** ------------------------------ **
+
+# Enironment variables
+
+PORT=6006
+EUREKA_URI = http://playonomics:playonomics@eureka.playonomics-dev.com:1111/eureka
+HOST_NAME=auth.playonomics-dev.com
+APP_NAME=auth
+ENABLE_HEART_BEAT=true
+REGISTER_WITH_EUREKA=true
+
+DATABASE=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/playonomics-dev?retryWrites=true&w=majority
+JWT_SECRET=sadasdc2wsdcljzcxkjaxcasjcbHxcscxzcsckjhsakcjbaskdasdasdgasdasdas
+JWT_EXPIRE=30d
+JWT_COOKIE_EXPIRE=30
 
 # Private DNS
 
@@ -81,6 +101,20 @@ docker container run -p 6006:6006 -d --rm --name plauth playonomics/auth
 # ADMIN
 
 # ** ------------------------------ **
+
+# Enironment variables
+
+PORT=6005
+EUREKA_URI = http://playonomics:playonomics@eureka.playonomics-dev.com:1111/eureka
+HOST_NAME=admin.playonomics-dev.com
+APP_NAME=admin
+ENABLE_HEART_BEAT=true
+REGISTER_WITH_EUREKA=true
+
+DATABASE=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/playonomics-dev?retryWrites=true&w=majority
+JWT_SECRET=sadasdc2wsdcljzcxkjaxcasjcbHxcscxzcsckjhsakcjbaskdasdasdgasdasdas
+JWT_EXPIRE=30d
+JWT_COOKIE_EXPIRE=30
 
 # Private DNS
 
