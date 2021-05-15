@@ -7,6 +7,8 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from '../user/types/user';
+import { LoginDTO, RegisterDTO } from '../auth/dto/auth.dto';
+
 import * as bcrypt from 'bcryptjs';
 import { Payload } from '../user/types/payload';
 @Injectable()
@@ -33,7 +35,35 @@ export class UserService {
     }
     return user;
   }
+ /**
+   *
+   * Authenticate user
+   * @param userDTO
+   */
+  async login(userDTO: LoginDTO) {
+    const { email, password } = userDTO;
+    const user = await this.userModel.findOne({ email }).select('+password');
 
+    if (!user) {
+      throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
+    }
+
+    if (await bcrypt.compare(password, user.password)) {
+      return this.sanitizeUser(user);
+    } else {
+      throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
+    }
+  }
+    /**
+   * Note - delete does not work
+   * @param user Remove password
+   */
+     async sanitizeUser(user: User) {
+      let sanitized = user;
+      delete sanitized['password'];
+  
+      return sanitized;
+    }
   async getUserById(userId: string) {
     let user = await this.getUser(userId);
 
