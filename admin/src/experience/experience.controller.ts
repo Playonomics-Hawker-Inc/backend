@@ -46,7 +46,7 @@ export class ExperienceController {
   }
 
   /**
-   * Note : The ordering is different as nestjs search autocomplete won't work is this comes before that
+   * Note : The ordering is different as nestjs search autocomplete won't work if this comes before that
    * @param slug
    * @returns
    */

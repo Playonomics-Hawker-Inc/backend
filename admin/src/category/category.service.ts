@@ -112,7 +112,6 @@ export class CategoryService {
     const pagination = {};
     let total = await this.categoryModel.find(matchQuery).countDocuments();
 
-    console.log('Got total', total);
     const page = parseInt(query.page, 10) || 1;
     const limit = parseInt(query.limit, 10) || total;
     const startIndex = (page - 1) * limit;

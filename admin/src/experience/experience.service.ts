@@ -64,6 +64,11 @@ export class ExperienceService {
       {
         $project: {
           title: 1,
+          description: 1,
+          status: 1,
+          price: 1,
+          theme: 1,
+          images: 1,
           slug: 1,
         },
       },
