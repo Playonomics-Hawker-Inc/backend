@@ -35,6 +35,20 @@ AWS_EUREKA_PASSWORD = playonomics
 docker build -f Dockerfile.production -t playonomics/eureka .
 docker container run -p 1111:1111 -d --rm --name hfeureka playonomics/eureka
 
+# EC2
+
+# Enironment variables
+
+docker build -f Dockerfile.ec2 -t playonomics/eureka-ec2 .
+docker image tag public.ecr.aws/f1c3k5e1/playonomics/eureka-ec2:latest playonomics/eureka-ec2:latest
+docker container run -p 1111:1111 -d --rm --name pleureka --network playonomics_net playonomics/eureka-ec2
+
+# ** ------------------------------ **
+
+## EUREKA - Discovery End
+
+# ** ------------------------------ **
+
 # ** ------------------------------ ** ------------------------------ \*\*
 
 ## GATEWAY - Gateway Server - START
@@ -62,6 +76,14 @@ AWS_GATEWAY_PORT = 8080
 
 docker build -f Dockerfile.production -t playonomics/gateway .
 docker container run -p 8080:8080 -d --rm --name hfgatwway playonomics/gateway
+
+# EC2
+
+# Enironment variables
+
+docker build -f Dockerfile.ec2 -t playonomics/gateway-ec2 .
+docker image tag public.ecr.aws/f1c3k5e1/playonomics/gateway-ec2:latest playonomics/gateway-ec2:latest
+docker container run -p 8080:8080 -d --rm --name plgateway --network playonomics_net playonomics/gateway-ec2
 
 # ** ------------------------------ ** ------------------------------ \*\*
 
