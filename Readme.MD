@@ -118,6 +118,14 @@ JWT_COOKIE_EXPIRE=30
 docker build -t playonomics/auth .
 docker container run -p 6006:6006 -d --rm --name plauth playonomics/auth
 
+# EC2
+
+# Enironment variables
+
+docker build -f Dockerfile.ec2 -t playonomics/auth-ec2 .
+docker image tag public.ecr.aws/f1c3k5e1/playonomics/auth-ec2:latest playonomics/auth-ec2:latest
+docker container run -p 6006:6006 -d --rm --name plauth --network playonomics_net playonomics/auth-ec2
+
 # ** ------------------------------ **
 
 # ADMIN
@@ -146,3 +154,29 @@ docker build -t playonomics/admin .
 docker container run -p 6005:6005 -d --rm --name plauth playonomics/admin
 
 docker run -it --rm -d --name verdaccio -p 4873:4873 verdaccio/verdaccio
+
+# EC2
+
+# Enironment variables
+
+docker build -f Dockerfile.ec2 -t playonomics/admin-ec2 .
+docker image tag public.ecr.aws/f1c3k5e1/playonomics/admin-ec2:latest playonomics/admin-ec2:latest
+docker container run -p 6005:6005 -d --rm --name pladmin --network playonomics_net playonomics/admin-ec2
+
+server
+{
+listen 80;
+listen [::]:80;
+server_name playonomics-api.hawkerlabs.com www.playonomics-api.hawkerlabs.com.com;
+
+    location /
+    {
+        proxy_pass http://127.0.0.1:8080;
+    }
+
+}
+
+sudo service nginx restart
+
+sudo service nginx start
+sudo service nginx stop
