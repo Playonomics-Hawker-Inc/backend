@@ -12,6 +12,7 @@ import { ExperienceModule } from './experience/experience.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { CategoryModule } from './category/category.module';
+import { TemplateModule } from './template/template.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { CategoryModule } from './category/category.module';
     UserModule,
     AuthModule,
     ImageModule,
+    TemplateModule,
   ],
   controllers: [AppController],
   providers: [AppService],

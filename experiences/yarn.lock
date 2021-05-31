@@ -858,9 +858,9 @@
   integrity sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==
 
 "@types/mongodb@*", "@types/mongodb@^3.5.27":
-  version "3.6.12"
-  resolved "https://npmregistry.code-awesome.com/@types%2fmongodb/-/mongodb-3.6.12.tgz#727960d34f35054d2f2ce68909e16094f742d935"
-  integrity sha512-49aEzQD5VdHPxyd5dRyQdqEveAg9LanwrH8RQipnMuulwzKmODXIZRp0umtxi1eBUfEusRkoy8AVOMr+kVuFog==
+  version "3.6.16"
+  resolved "https://npmregistry.code-awesome.com/@types%2fmongodb/-/mongodb-3.6.16.tgz#7a48aaeb777f57e4655515ce18acbc68600dfeb9"
+  integrity sha512-D3tM0iRUet3TiIMAdvovxAIRG9gYqFd4j7visGwmPNdQj8Fq/uFFfRxyGCgEwVXAs0NnJPMI/QGVTADxDwhmSQ==
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
@@ -4430,9 +4430,9 @@ mongoose-legacy-pluralize@1.0.2:
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
 mongoose@^5.12.7:
-  version "5.12.7"
-  resolved "https://npmregistry.code-awesome.com/mongoose/-/mongoose-5.12.7.tgz#9cbf42246c53b7ab79342c04ef72938d4047b071"
-  integrity sha512-BniNwACn7uflK2h+M3juvyLH5nn9JDFgnB5KE2EwWFwSrRyhSpPnCtanRKJW3OtMCJyPccMIjtGZxHNW7JfnIw==
+  version "5.12.10"
+  resolved "https://npmregistry.code-awesome.com/mongoose/-/mongoose-5.12.10.tgz#dea5e0ab8718c4cc96f1d608949e3fa0a48730aa"
+  integrity sha512-/VmFFEACH2yiuPcJoBjOzVTXozBhCeminVbWI8mxiZwvgCbNu9PQrIABIgeCJncnZH8VT4G7s2IXO5FySxF1XA==
   dependencies:
     "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
@@ -5001,10 +5001,10 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-playonomics-lib@^1.0.1:
-  version "1.0.1"
-  resolved "https://npmregistry.code-awesome.com/playonomics-lib/-/playonomics-lib-1.0.1.tgz#7252c2484add8dc99f302b26a74b7da3fd03611b"
-  integrity sha512-Z4wk5L4Lf+/8gMpVVDEOAvQl89F0R/gzr0hpCuDRYvgM3mZJJrdwP7JoYPErA1yAMjXfEyQh9itG8ExaTotWbQ==
+playonomics-lib@^1.0.2:
+  version "1.0.2"
+  resolved "https://npmregistry.code-awesome.com/playonomics-lib/-/playonomics-lib-1.0.2.tgz#ec8fb5c56f9288b713b47fe219667bb5a248d5b2"
+  integrity sha512-ebZtX1MCiISKwUse4HWxxCxzPZVWnI1q19vauIV1dd+eU4QQqkdHhVGdm2iEUjB9+81xujznnDB1okPXXods/Q==
   dependencies:
     "@types/express" "^4.17.11"
     "@types/ip" "^1.1.0"
