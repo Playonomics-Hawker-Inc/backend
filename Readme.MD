@@ -153,7 +153,9 @@ JWT_COOKIE_EXPIRE=30
 docker build -t playonomics/admin .
 docker container run -p 6005:6005 -d --rm --name plauth playonomics/admin
 
+docker pull verdaccio/verdaccio
 docker run -it --rm -d --name verdaccio -p 4873:4873 verdaccio/verdaccio
+docker run -it --rm --name verdaccio -p 4873:4873 verdaccio/verdaccio
 
 # EC2
 
@@ -180,3 +182,8 @@ sudo service nginx restart
 
 sudo service nginx start
 sudo service nginx stop
+
+## TODO
+
+The current architecture is not a strictly event based microservices pattern, in future each micro service will operate in their on their own sandbox,
+with their own db, and with a rabbitmq exchange based broker service.

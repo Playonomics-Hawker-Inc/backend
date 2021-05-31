@@ -25,3 +25,6 @@
 /skills/.env
 
 .DS_Store
+
+/rabbit/data
+/rabbit/logs
