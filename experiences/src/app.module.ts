@@ -5,7 +5,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { CatalogModule } from './catalog/catalog.module';
-import { SubscriptionModule } from './subscription/subscription.module';
+import { AuthModule } from './auth/auth.module';
+import { ExperienceModule } from './experience/experience.module';
+import { CategoryModule } from './category/category.module';
+import { UserModule } from './user/user.module';
+import { TemplateModule } from './template/template.module';
 
 @Module({
   imports: [
@@ -16,8 +20,12 @@ import { SubscriptionModule } from './subscription/subscription.module';
       useFindAndModify: false,
       useUnifiedTopology: true,
     }),
+    AuthModule,
     CatalogModule,
-    SubscriptionModule,
+    ExperienceModule,
+    CategoryModule,
+    UserModule,
+    TemplateModule,
   ],
   controllers: [AppController],
   providers: [AppService],
