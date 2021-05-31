@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { CatalogController } from './catalog.controller';
-import { CatalogService } from './catalog.service';
+import { ExperienceService } from './experience.service';
+import { ExperienceController } from './experience.controller';
+import { MongooseModule } from '@nestjs/mongoose';
 import { ExperienceSchema } from '../experience/schemas/experience.schema';
 import { CategorySchema } from '../category/schemas/category.schema';
-import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       { name: 'Category', schema: CategorySchema },
     ]),
   ],
-  controllers: [CatalogController],
-  providers: [CatalogService],
+  providers: [ExperienceService],
+  controllers: [ExperienceController],
 })
-export class CatalogModule {}
+export class ExperienceModule {}
