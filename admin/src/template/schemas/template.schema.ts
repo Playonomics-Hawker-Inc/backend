@@ -27,11 +27,18 @@ export const TemplateSchema = new mongoose.Schema({
     maxlength: 32,
   },
   components: [ComponentSchema],
+  state: {
+    type: String,
+    required: true,
+    enum: ['active', 'inactive'],
+    default: 'inactive',
+  },
   experience: {
     _id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Experience',
     },
+
     name: String,
     slug: String,
   },

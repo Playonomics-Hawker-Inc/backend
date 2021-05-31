@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { Experience } from './types/experience';
-import { Category } from './types/category';
+import { Experience } from '../experience/types/experience';
+import { Category } from '../category/types/category';
 @Injectable()
 export class CatalogService {
   constructor(

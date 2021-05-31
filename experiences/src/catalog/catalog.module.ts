@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CatalogController } from './catalog.controller';
 import { CatalogService } from './catalog.service';
-import { ExperienceSchema } from './schemas/experience.schema';
+import { ExperienceSchema } from '../experience/schemas/experience.schema';
 import { CategorySchema } from '../category/schemas/category.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 
