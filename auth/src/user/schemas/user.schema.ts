@@ -29,6 +29,29 @@ export const UserSchema = new mongoose.Schema({
     default: ['USER'],
   },
 
+  subscriptionStatus: {
+    type: String,
+    enum: ['ACTIVE', 'INACTIVE'],
+    default: ['INACTIVE'],
+  },
+  PaymentStatus: {
+    type: String,
+    enum: ['SUCCESS', 'PENDING', 'FAILED', 'OPEN'],
+    default: ['OPEN'],
+  },
+
+  subscription: {
+    type: Object,
+    subscriptionType: {
+      type: String,
+      enum: ['BASIC', 'MONTHLY', 'ANNUALLY'],
+      default: ['BASIC'],
+    },
+    required: true,
+    subscriptionStartDate: String,
+    subscriptionEndDate: String,
+  },
+
   phone: {
     type: String,
   },

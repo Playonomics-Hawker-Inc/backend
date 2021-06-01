@@ -21,6 +21,25 @@ export class UserService {
     return this.sanitizeUser(createdUser);
   }
 
+  /**
+   *
+   * @param id
+   * @param dto
+   */
+  async editSubscription(id: string, dto: RegisterDTO): Promise<User> {
+    const { subscription, subscriptionStatus, PaymentStatus } = dto;
+
+    console.log('see dto', dto, subscription);
+    if (dto.PaymentStatus !== 'SUCCESS') {
+      dto.subscriptionStatus = 'INACTIVE';
+    } else {
+      dto.subscriptionStatus = 'ACTIVE';
+    }
+    const user = await this.userModel.findOne({ _id: id });
+    await user.updateOne(dto);
+    return await await this.userModel.findOne({ _id: id });
+  }
+
   async findUserByType(type: string, query: any) {
     return await this.getPaginatedResponse({ type: type.toUpperCase() }, query);
   }
