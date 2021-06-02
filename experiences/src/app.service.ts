@@ -16,7 +16,7 @@ export class AppService {
       (process.env.ENABLE_HEART_BEAT as unknown) as boolean,
     );
   }
-  getHello(): string {
-    return 'Hello World!';
+  getHealthCheck(): string {
+    return 'Playonomics Experiences Services OK!';
   }
 }

@@ -20,14 +20,14 @@ spring:
 
 eureka:
   instance:
-    hostname: eureka.playonomics-dev.com
+    hostname: ${AWS_EUREKA_HOSTNAME}
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://playonomics:playonomics@eureka.playonomics-dev.com:1111/eureka
+      defaultZone: http://${AWS_EUREKA_USER}:${AWS_EUREKA_PASSWORD}@${AWS_EUREKA_HOSTNAME}:${AWS_EUREKA_PORT}/eureka
 
 
 
 server:
-  port: 8080
+  port: ${AWS_GATEWAY_PORT}

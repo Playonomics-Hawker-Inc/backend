@@ -26,8 +26,8 @@ export class CategoryController {
   }
 
   @Get()
-  async getAllCategories() {
-    return await this.categoryService.getAllCategories();
+  async getAll(@Query() query) {
+    return await this.categoryService.getAllCategories(query);
   }
 
   /**
@@ -41,9 +41,29 @@ export class CategoryController {
     return await this.categoryService.editCategory(dto);
   }
 
+  /**
+   *
+   * @param id
+   * @returns
+   */
   @Delete(':id')
   async removeCategory(@Param('id') id: string) {
     await this.categoryService.deleteCategory(id);
     return 'success';
+  }
+
+  /**
+   *
+   * @param query
+   * @returns
+   */
+  @Get('autocomplete')
+  async searchDepartmentByNameAutoComplete(
+    @Query('query') query,
+  ): Promise<Category[]> {
+    const departments = await this.categoryService.searchCategoryByNameAutoComplete(
+      query,
+    );
+    return departments;
   }
 }

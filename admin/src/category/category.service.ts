@@ -23,10 +23,8 @@ export class CategoryService {
    *
    * @returns
    */
-  async getAllCategories() {
-    const result = await this.categoryModel.find();
-
-    return result as Category[];
+  async getAllCategories(query: any) {
+    return await this.getPaginatedResponse({}, query);
   }
 
   async findByCategoryId(id: string): Promise<Category> {
@@ -58,5 +56,101 @@ export class CategoryService {
     } else {
       throw new HttpException('Category Not found', HttpStatus.NOT_FOUND);
     }
+  }
+
+  /**
+   * Autocomplete search
+   * @param query
+   * @returns
+   */
+  async searchCategoryByNameAutoComplete(query: String): Promise<Category[]> {
+    return await this.categoryModel.aggregate([
+      {
+        $search: {
+          autocomplete: {
+            path: 'name',
+            query: query,
+          },
+        },
+      },
+
+      { $limit: 5 },
+      {
+        $project: {
+          name: 1,
+          slug: 1,
+        },
+      },
+    ]);
+  }
+  /**
+   * Pagination
+   * @param matchQuery
+   * @param query
+   * @returns
+   */
+  private async getPaginatedResponse(
+    matchQuery: any,
+    query: any,
+  ): Promise<Category[]> {
+    // Copy req.query
+    const reqQuery = { ...query };
+    // Fields to exclude
+    const removeFields = ['select', 'sort', 'page', 'limit'];
+
+    // Loop over removeFields and delete them from reqQuery
+    removeFields.forEach((param) => delete reqQuery[param]);
+
+    // Create query string
+    let queryStr = JSON.stringify(reqQuery);
+    // Create operators ($gt, $gte, etc)
+    queryStr = queryStr.replace(
+      /\b(gt|gte|lt|lte|in)\b/g,
+      (match) => `$${match}`,
+    );
+
+    const pagination = {};
+    let total = await this.categoryModel.find(matchQuery).countDocuments();
+
+    const page = parseInt(query.page, 10) || 1;
+    const limit = parseInt(query.limit, 10) || total;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    if (endIndex < total) {
+      pagination['next'] = {
+        page: page + 1,
+        limit,
+      };
+    }
+
+    if (startIndex > 0) {
+      pagination['prev'] = {
+        page: page - 1,
+        limit,
+      };
+    }
+    pagination['pageCount'] = Math.ceil(total / limit);
+
+    const result = await this.categoryModel.aggregate([
+      { $match: matchQuery },
+
+      {
+        $project: {
+          name: 1,
+          description: 1,
+          slug: 1,
+        },
+      },
+      {
+        $facet: {
+          metadata: [{ $count: 'total' }, { $addFields: { page: pagination } }],
+          categories: [{ $skip: startIndex }, { $limit: limit }], // add projection here wish you re-shape the docs
+        },
+      },
+    ]);
+    console.log('Got result', result);
+
+    return result[0];
   }
 }
