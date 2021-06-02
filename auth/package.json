@@ -27,6 +27,8 @@
     "@nestjs/mongoose": "^7.2.4",
     "@nestjs/passport": "^7.1.5",
     "@nestjs/platform-express": "^7.6.15",
+    "@nestjs/schedule": "^0.4.3",
+    "@types/cron": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "mongoose": "^5.12.7",
     "passport": "^0.4.1",
