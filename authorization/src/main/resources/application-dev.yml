@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: authorization
+
+  data:
+    mongodb:
+      uri: mongodb+srv://hawkerfresh:hawkerfresh@hawkerfresh.tdtsn.mongodb.net/auth?retryWrites=true&w=majority
+      database: auth
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://playonomics:playonomics@localhost:1111/eureka
+
+
+
+server:
+  port: 8989
