@@ -25,6 +25,14 @@ export class TemplateController {
     return await this.templateService.createTemplate(dto);
   }
 
+  @Get('details')
+  async getTemplate(
+    @Query('slug') slug,
+    @Query('title') title,
+  ): Promise<Template> {
+    return await this.templateService.getTemplate(slug, title);
+  }
+
   /**
    * Get templates for an experience slug
    * @param slug

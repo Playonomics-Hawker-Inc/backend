@@ -31,4 +31,17 @@ export class TemplateService {
   async getTemplates(slug: string) {
     return await this.templateModel.find({ 'experience.slug': slug });
   }
+
+  /**
+   *
+   * @param slug
+   * @param title
+   * @returns
+   */
+  async getTemplate(slug: string, title: string): Promise<Template> {
+    return await this.templateModel.findOne({
+      'experience.slug': slug,
+      title: title,
+    });
+  }
 }
