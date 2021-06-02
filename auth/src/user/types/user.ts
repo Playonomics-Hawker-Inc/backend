@@ -10,5 +10,8 @@ export interface User extends Document {
   type: string;
   address: string;
   phone: string;
+  subscription: any;
+  subscriptionStatus: string;
+  PaymentStatus: string;
   created: Date;
 }

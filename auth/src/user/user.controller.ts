@@ -14,6 +14,7 @@ import { RegisterDTO } from '../auth/dto/auth-dto';
 
 import { UserService } from '../user/user.service';
 import { AuthGuard } from '@nestjs/passport';
+import { User } from './types/user';
 
 @Controller('user/v1')
 export class UserController {
@@ -24,5 +25,13 @@ export class UserController {
     const user = await this.userService.create(userDTO);
 
     return { user };
+  }
+
+  @Put('subscription/:id')
+  async editSubscription(
+    @Param('id') id: string,
+    @Body() dto: RegisterDTO,
+  ): Promise<User> {
+    return await this.userService.editSubscription(id, dto);
   }
 }
