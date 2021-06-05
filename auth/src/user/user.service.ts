@@ -40,10 +40,10 @@ export class UserService {
   // }
 
   // this is the demo of seduling
-  @Cron(CronExpression.EVERY_10_SECONDS)
-  async endMonthlySubscription() {
-    console.log('see its working');
-  }
+  // @Cron(CronExpression.EVERY_10_SECONDS)
+  // async endMonthlySubscription() {
+  //   console.log('see its working');
+  // }
 
   async editSubscription(id: string, dto: RegisterDTO): Promise<User> {
     const { subscription, subscriptionStatus, PaymentStatus } = dto;

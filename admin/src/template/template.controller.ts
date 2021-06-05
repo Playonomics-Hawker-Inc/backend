@@ -33,6 +33,11 @@ export class TemplateController {
     return await this.templateService.getTemplate(slug, title);
   }
 
+  @Get('titles/:slug')
+  async getAvailableTitles(@Param('slug') slug: string) {
+    return await this.templateService.getAvailableTitles(slug);
+  }
+
   /**
    * Get templates for an experience slug
    * @param slug
