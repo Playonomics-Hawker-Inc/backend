@@ -165,6 +165,20 @@ docker build -f Dockerfile.ec2 -t playonomics/admin-ec2 .
 docker image tag public.ecr.aws/f1c3k5e1/playonomics/admin-ec2:latest playonomics/admin-ec2:latest
 docker container run -p 6005:6005 -d --rm --name pladmin --network playonomics_net playonomics/admin-ec2
 
+## Rabbit MQ
+
+docker-compose up -d
+
+# Redis
+
+## Commands
+
+docker-compose up -d
+docker exec -it playonomics_redis sh
+
+- redis-cli
+- auth
+
 server
 {
 listen 80;

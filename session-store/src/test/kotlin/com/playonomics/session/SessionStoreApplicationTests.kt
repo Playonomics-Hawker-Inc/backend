@@ -1,10 +1,10 @@
-package com.playonomics.authorization
+package com.playonomics.session
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class AuthorizationApplicationTests {
+class SessionStoreApplicationTests {
 
 	@Test
 	fun contextLoads() {

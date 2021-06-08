@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: session
+  jackson:
+    serialization:
+      indent_output: true
+      write_dates_as_timestamps: false
+      write_durations_as_timestamps: false
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowed-headers: "*"
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: playonomics
+
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://playonomics:playonomics@localhost:1111/eureka
+
+
+
+server:
+  port: 8000

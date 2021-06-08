@@ -17,12 +17,14 @@ import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { User as UserDocument } from '../user/types/user';
 import { User } from '../user/user.decorator';
+import { SessionService } from '../session/session.service';
 
 @Controller('v1')
 export class AuthController {
   constructor(
     private userService: UserService,
     private authService: AuthService,
+    private sessionService: SessionService,
   ) {}
 
   /**
@@ -34,6 +36,8 @@ export class AuthController {
     const user = await this.userService.create(userDTO);
 
     const token = await this.authService.signPayload({ id: user._id });
+    await this.authService.signPayload({ id: user._id });
+    await this.sessionService.createSession(token);
     return { token };
   }
 
@@ -45,6 +49,7 @@ export class AuthController {
   async login(@Body() userDTO: LoginDTO) {
     const user = await this.userService.login(userDTO);
     const token = await this.authService.signPayload({ id: user._id });
+    await this.sessionService.createSession(token);
     return { token };
   }
 
