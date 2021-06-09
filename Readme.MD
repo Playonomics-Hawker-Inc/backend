@@ -201,3 +201,12 @@ sudo service nginx stop
 
 The current architecture is not a strictly event based microservices pattern, in future each micro service will operate in their on their own sandbox,
 with their own db, and with a rabbitmq exchange based broker service.
+
+# PORTS
+
+admin - 6005
+auth - 6006s
+experiences - 6001
+cart-order - 6002
+
+yarn add mongoose passport passport-jwt playonomics-lib bcryptjs @nestjs/config @nestjs/mongoose @nestjs/passport
