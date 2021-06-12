@@ -13,8 +13,6 @@ export class SessionService {
         process.env.SESSION_END_POINT,
         {
           id: user._id,
-          firstName: user.firstName,
-          lastName: user.lastName,
           token: token,
           isActive: true,
           email: user.email,

@@ -16,14 +16,18 @@ import { AuthGuard } from '../common/guards/auth.guard';
 import { CartService } from './cart.service';
 import { Cart } from './types/cart';
 
+@UseGuards(AuthGuard)
 @Controller('v1/cart')
 export class CartController {
   constructor(private readonly cartService: CartService) {}
 
-  @UseGuards(AuthGuard)
   @Post('add')
   addToCart(@Body() dto: CartDto, @User() user) {
-    // console.log('dto', dto);
-    return this.cartService.addToCart(dto, user._id);
+    return this.cartService.addToCart(dto, user.userId);
+  }
+
+  @Post('remove')
+  removeFromCart(@Body() dto: CartDto, @User() user) {
+    return this.cartService.removeFromCart(dto, user.userId);
   }
 }

@@ -18,6 +18,7 @@ export class ExperienceService {
       slug: dto.category.toString(),
     });
 
+    console.log('category', category);
     dto.category = {
       _id: category._id,
       name: category.name,

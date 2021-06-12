@@ -10,7 +10,7 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { AuthGuard } from './guards/auth.guard';
 
 import { LoginDTO, RegisterDTO } from './dto/auth-dto';
 import { UserService } from '../user/user.service';
@@ -36,9 +36,8 @@ export class AuthController {
     const user = await this.userService.create(userDTO);
 
     const token = await this.authService.signPayload({ id: user._id });
-    await this.authService.signPayload({ id: user._id });
-    await this.sessionService.createSession(token);
-    return { token };
+    const session = await this.sessionService.createSession(user, token);
+    return { session };
   }
 
   /**
@@ -49,12 +48,13 @@ export class AuthController {
   async login(@Body() userDTO: LoginDTO) {
     const user = await this.userService.login(userDTO);
     const token = await this.authService.signPayload({ id: user._id });
-    await this.sessionService.createSession(token);
-    return { token };
+    const session = await this.sessionService.createSession(user, token);
+
+    return { session };
   }
 
   @Get('me')
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard)
   async me(@User() user): Promise<UserDocument> {
     return user;
   }

@@ -29,8 +29,7 @@ export class AuthGuard implements CanActivate {
 
     try {
       // Store the user on the request object if we want to retrieve it from the controllers
-      const response = await this.sessionService.lookUpSession(sessionId);
-      request['user'] = response.session;
+      request['user'] = await this.sessionService.lookUpSession(sessionId);
       return true;
     } catch (e) {
       throw new HttpException(e.message, HttpStatus.UNAUTHORIZED);

@@ -93,4 +93,41 @@ export class CartService {
       throw new HttpException('Cart Not found', HttpStatus.NOT_FOUND);
     }
   }
+
+  /**
+   * Remove item from cart
+   * @param dto
+   * @param userId
+   */
+  async removeFromCart(dto: CartDto, userId: string): Promise<Cart> {
+    const userCart = await this.findOne(userId);
+
+    if (!userCart) {
+      throw new HttpException('Cart Not found', HttpStatus.NOT_FOUND);
+    }
+    //Update cart
+    await this.model.updateOne(
+      { 'user._id': userId.toString() },
+      { $pull: { experiences: { _id: dto.experiences[0]._id.toString() } } },
+    );
+
+    // If the cart had just one item delete the cart
+    if (
+      userCart.experiences.length == 1 &&
+      userCart.experiences[0]._id.toString() ==
+        dto.experiences[0]._id.toString()
+    ) {
+      await userCart.deleteOne();
+    }
+
+    let experiences = userCart.experiences;
+    let filtered = experiences.filter((experience) => {
+      return experience._id.toString() != dto.experiences[0]._id.toString();
+    });
+
+    console.log('filtered', filtered);
+    userCart.experiences = filtered;
+    //return updated cart
+    return userCart;
+  }
 }

@@ -10,6 +10,9 @@ enum class Authority {
 data class SessionRequest(
     val id: String,
     val token: String? = null,
+    val firstName: String? = null,
+    val lastName: String? = null,
     @JsonProperty("isActive") var isActive: Boolean? = true,
-    var roles: List<Authority>? = listOf(Authority.USER)
+    var email : String?,
+    var authorities: List<Authority>? = listOf(Authority.USER)
 )

@@ -149,7 +149,6 @@ export class CategoryService {
         },
       },
     ]);
-    console.log('Got result', result);
 
     return result[0];
   }

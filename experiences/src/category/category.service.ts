@@ -99,14 +99,14 @@ export class CategoryService {
     const removeFields = ['select', 'sort', 'page', 'limit'];
 
     // Loop over removeFields and delete them from reqQuery
-    removeFields.forEach((param) => delete reqQuery[param]);
+    removeFields.forEach(param => delete reqQuery[param]);
 
     // Create query string
     let queryStr = JSON.stringify(reqQuery);
     // Create operators ($gt, $gte, etc)
     queryStr = queryStr.replace(
       /\b(gt|gte|lt|lte|in)\b/g,
-      (match) => `$${match}`,
+      match => `$${match}`,
     );
 
     const pagination = {};
@@ -149,7 +149,6 @@ export class CategoryService {
         },
       },
     ]);
-    console.log('Got result', result);
 
     return result[0];
   }

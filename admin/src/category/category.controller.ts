@@ -12,10 +12,10 @@ import {
 import { CategoryService } from './category.service';
 import { Category } from './types/category';
 import { CategoryDto } from './dto/category.dto';
-import { AuthGuard } from '@nestjs/passport';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { AdminGuard } from '../auth/guards/admin.guard';
 
-@UseGuards(AuthGuard('jwt'), AdminGuard)
+@UseGuards(AuthGuard, AdminGuard)
 @Controller('v1/category')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}

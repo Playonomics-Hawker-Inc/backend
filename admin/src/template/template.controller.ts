@@ -9,13 +9,14 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { AdminGuard } from '../auth/guards/admin.guard';
 
 import { TemplateService } from './template.service';
 import { TemplateDto } from './dto/template.dto';
 import { Template } from './types/template';
 
+@UseGuards(AuthGuard, AdminGuard)
 @Controller('v1/template')
 export class TemplateController {
   constructor(private readonly templateService: TemplateService) {}

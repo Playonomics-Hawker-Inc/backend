@@ -12,10 +12,11 @@ export class AdminGuard implements CanActivate {
 
   canActivate(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest();
-    const user = request.user;
+    const session = request.user.session;
+
     if (
-      (user && user.authorities.includes('ADMIN')) ||
-      user.authorities.includes('admin')
+      (session && session.authorities.includes('ADMIN')) ||
+      session.authorities.includes('admin')
     ) {
       return true;
     }

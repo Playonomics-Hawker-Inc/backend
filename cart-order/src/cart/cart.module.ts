@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { ExperienceSchema } from '../common/schemas/experience.schema';
 import { UserSchema } from '../common/schemas/user.schema';
+import { SessionService } from '../session/session.service';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { UserSchema } from '../common/schemas/user.schema';
     ]),
     HttpModule,
   ],
-  providers: [CartService],
+  providers: [CartService, SessionService],
   controllers: [CartController],
 })
 export class CartModule {}

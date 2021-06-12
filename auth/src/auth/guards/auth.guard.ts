@@ -20,6 +20,7 @@ export class AuthGuard implements CanActivate {
 
     const sessionId = request.header('X-Session-Id');
 
+    console.log('Got header', request.header('X-Session-Id'));
     if (!sessionId) {
       throw new HttpException(
         'X-Session-Id:  missing',
@@ -29,11 +30,24 @@ export class AuthGuard implements CanActivate {
 
     try {
       // Store the user on the request object if we want to retrieve it from the controllers
-      const response = await this.sessionService.lookUpSession(sessionId);
-      request['user'] = response.session;
+      request['user'] = await this.sessionService.lookUpSession(sessionId);
       return true;
     } catch (e) {
       throw new HttpException(e.message, HttpStatus.UNAUTHORIZED);
     }
+
+    //   try {
+    //     // hard coding it now, will be picked up from a session service
+
+    //     request['user'] = {
+    //       _id: '609d803c132965c674526718',
+    //       authorities: ['ADMIN'],
+    //       email: 'pladmin@gmail.com',
+    //       created: '2021-05-13T19:38:36.474Z',
+    //     };
+    //     return true;
+    //   } catch (e) {
+    //     throw new HttpException(e.message, HttpStatus.UNAUTHORIZED);
+    //   }
   }
 }

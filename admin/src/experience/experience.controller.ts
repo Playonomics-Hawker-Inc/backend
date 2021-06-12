@@ -12,10 +12,10 @@ import {
 import { ExperienceService } from './experience.service';
 import { ExperienceDto } from '../experience/dto/experience.dto';
 import { Experience } from '../experience/types/experience';
-import { AuthGuard } from '@nestjs/passport';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { AdminGuard } from '../auth/guards/admin.guard';
 
-@UseGuards(AuthGuard('jwt'), AdminGuard)
+@UseGuards(AuthGuard, AdminGuard)
 @Controller('v1/experience')
 export class ExperienceController {
   constructor(private readonly experiencesService: ExperienceService) {}
@@ -52,8 +52,6 @@ export class ExperienceController {
    */
   @Get(':slug')
   async findOne(@Param('slug') slug: string) {
-    console.log('Got slug', slug);
-
     return await this.experiencesService.findOne(slug);
   }
 }

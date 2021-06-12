@@ -12,7 +12,4 @@ export class RegisterDTO {
   email: string;
   address: any;
   phone: string;
-  subscription: any;
-  subscriptionStatus: string;
-  PaymentStatus: string;
 }
