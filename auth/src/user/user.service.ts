@@ -5,7 +5,6 @@ import { LoginDTO, RegisterDTO } from '../auth/dto/auth-dto';
 import { User } from './types/user';
 import * as bcrypt from 'bcryptjs';
 import { Payload } from './types/payload';
-import { Cron, CronExpression, Timeout } from '@nestjs/schedule';
 @Injectable()
 export class UserService {
   constructor(@InjectModel('User') private userModel: Model<User>) {}
@@ -38,26 +37,6 @@ export class UserService {
   //   await user.updateOne(dto);
   //   return await await this.userModel.findOne({ _id: id });
   // }
-
-  // this is the demo of seduling
-  @Cron(CronExpression.EVERY_10_SECONDS)
-  async endMonthlySubscription() {
-    console.log('see its working');
-  }
-
-  async editSubscription(id: string, dto: RegisterDTO): Promise<User> {
-    const { subscription, subscriptionStatus, PaymentStatus } = dto;
-
-    console.log('see dto', dto, subscription);
-    if (dto.PaymentStatus !== 'SUCCESS') {
-      dto.subscriptionStatus = 'INACTIVE';
-    } else {
-      dto.subscriptionStatus = 'ACTIVE';
-    }
-    const user = await this.userModel.findOne({ _id: id });
-    await user.updateOne(dto);
-    return await await this.userModel.findOne({ _id: id });
-  }
 
   async findUserByType(type: string, query: any) {
     return await this.getPaginatedResponse({ type: type.toUpperCase() }, query);

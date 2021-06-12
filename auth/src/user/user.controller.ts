@@ -26,12 +26,4 @@ export class UserController {
 
     return { user };
   }
-
-  @Put('subscription/:id')
-  async editSubscription(
-    @Param('id') id: string,
-    @Body() dto: RegisterDTO,
-  ): Promise<User> {
-    return await this.userService.editSubscription(id, dto);
-  }
 }

@@ -9,13 +9,14 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { AdminGuard } from '../auth/guards/admin.guard';
 
 import { TemplateService } from './template.service';
 import { TemplateDto } from './dto/template.dto';
 import { Template } from './types/template';
 
+@UseGuards(AuthGuard, AdminGuard)
 @Controller('v1/template')
 export class TemplateController {
   constructor(private readonly templateService: TemplateService) {}
@@ -31,6 +32,11 @@ export class TemplateController {
     @Query('title') title,
   ): Promise<Template> {
     return await this.templateService.getTemplate(slug, title);
+  }
+
+  @Get('titles/:slug')
+  async getAvailableTitles(@Param('slug') slug: string) {
+    return await this.templateService.getAvailableTitles(slug);
   }
 
   /**

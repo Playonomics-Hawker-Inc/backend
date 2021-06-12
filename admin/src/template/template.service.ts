@@ -44,4 +44,11 @@ export class TemplateService {
       title: title,
     });
   }
+
+  async getAvailableTitles(slug: string) {
+    let something = await this.templateModel
+      .find({ 'experience.slug': slug })
+      .select('title');
+    console.log('something', something);
+  }
 }

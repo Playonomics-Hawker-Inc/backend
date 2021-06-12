@@ -6,11 +6,11 @@ import {
   Query,
   Param,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { AdminGuard } from '../auth/guards/admin.guard';
 import { UserService } from './user.service';
 
-@UseGuards(AuthGuard('jwt'), AdminGuard)
+@UseGuards(AuthGuard, AdminGuard)
 @Controller('v1/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}

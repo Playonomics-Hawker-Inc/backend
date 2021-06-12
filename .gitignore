@@ -5,6 +5,7 @@
 /profile/node_modules
 /skills/node_modules
 /playonomics-lib/node_modules
+/cart-order/node_modules
 
 /admin/dist
 /admin/dist
@@ -13,6 +14,7 @@
 /profile/dist
 /skills/dist
 /playonomics-lib/dist
+/cart-order/dist
 
 /eureka/.idea
 /gateway/.idea
@@ -23,6 +25,7 @@
 /experiences/.env
 /profile/.env
 /skills/.env
+/cart-order/.env
 
 .DS_Store
 

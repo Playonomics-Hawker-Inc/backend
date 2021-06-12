@@ -10,6 +10,8 @@ import { ExperienceModule } from './experience/experience.module';
 import { CategoryModule } from './category/category.module';
 import { UserModule } from './user/user.module';
 import { TemplateModule } from './template/template.module';
+import { CartModule } from './cart/cart.module';
+import { SessionModule } from './session/session.module';
 
 @Module({
   imports: [
@@ -26,6 +28,8 @@ import { TemplateModule } from './template/template.module';
     CategoryModule,
     UserModule,
     TemplateModule,
+    CartModule,
+    SessionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
