@@ -6,8 +6,8 @@ services:
     command: redis-server --requirepass playonomics
     container_name: playonomics_redis
     volumes:
-      - $PWD/data:/var/lib/redis/
-      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data:/var/lib/redis/
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - 6379:6379
     networks:

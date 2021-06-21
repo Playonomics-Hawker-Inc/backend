@@ -3,18 +3,16 @@ FROM node:alpine
 # Create app directory
 WORKDIR /usr/src/app
 ENV NODE_ENV=production
-ENV PORT=6005
+ENV PORT=6001
 ENV EUREKA_URI=http://playonomics:playonomics@pleureka:1111/eureka
-ENV HOST_NAME=pladmin
-ENV APP_NAME=admin
+ENV HOST_NAME=plexperiences
+ENV APP_NAME=experiences
 ENV ENABLE_HEART_BEAT=true
 ENV REGISTER_WITH_EUREKA=true
 
 
-ENV AUTH=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/auth-dev?retryWrites=true&w=majority
-ENV EXPERIENCE=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/experiences-dev?retryWrites=true&w=majority
-ENV CART_ORDER=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/cart-order-dev?retryWrites=true&w=majority
-ENV ADMIN=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/dmin-dev?retryWrites=true&w=majority
+ENV DATABASE=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/experiences-dev?retryWrites=true&w=majority
+
 
 ENV SESSION_END_POINT=http://plgateway:8080/session/v1
 ENV JWT_SECRET=amsn2idgvaodyweidhewfsdcacdjkbsdlkbwlkchbsldhcbsdcksasjba;skjdaksjdaskjdgasdasdasdasd
@@ -45,6 +43,6 @@ RUN npm i -g @nestjs/cli
 RUN npm run build
 
 
-EXPOSE 6005
+EXPOSE 6001
 #The server is generated under dist as per the tsconfig, hence the command
 CMD ["node", "dist/main"]

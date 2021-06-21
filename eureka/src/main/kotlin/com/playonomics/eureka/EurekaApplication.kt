@@ -2,7 +2,6 @@ package com.playonomics.eureka
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -26,10 +25,13 @@ class EurekaApplication : WebMvcConfigurer {
         registry.addMapping("/**").allowedHeaders("Authorization", "content-type", "x-auth-token")
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS").maxAge(3600L)
     }
+
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(EurekaApplication::class.java, *args)
+        }
+    }
 }
 
-
-fun main(args: Array<String>) {
-    runApplication<EurekaApplication>(*args)
-}
 

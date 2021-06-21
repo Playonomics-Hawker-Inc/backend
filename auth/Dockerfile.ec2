@@ -11,10 +11,11 @@ ENV ENABLE_HEART_BEAT=true
 ENV REGISTER_WITH_EUREKA=true
 
 
-ENV DATABASE=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/playonomics-dev?retryWrites=true&w=majority
+ENV DATABASE=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/auth-dev?retryWrites=true&w=majority
 ENV JWT_SECRET=amsn2idgvaodyweidhewfsdcacdjkbsdlkbwlkchbsldhcbsdcksasjba;skjdaksjdaskjdgasdasdasdasd
 ENV JWT_EXPIRE=30d
 ENV JWT_COOKIE_EXPIRE=30
+ENV SESSION_END_POINT=http://plgateway:8080/session/v1
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied

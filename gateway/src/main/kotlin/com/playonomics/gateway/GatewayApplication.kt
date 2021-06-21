@@ -10,11 +10,14 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 @EnableEurekaClient
 @EnableDiscoveryClient
 @SpringBootApplication
-class GatewayApplication
+class GatewayApplication {
 
-fun main(args: Array<String>) {
-    runApplication<GatewayApplication>(*args)
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(GatewayApplication::class.java, *args)
+        }
+    }
 }
-
 
 

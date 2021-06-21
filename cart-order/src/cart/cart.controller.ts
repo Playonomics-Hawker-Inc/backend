@@ -21,6 +21,10 @@ import { Cart } from './types/cart';
 export class CartController {
   constructor(private readonly cartService: CartService) {}
 
+  @Get()
+  getUserCart(@User() user) {
+    return this.cartService.getUserCart(user.userId);
+  }
   @Post('add')
   addToCart(@Body() dto: CartDto, @User() user) {
     return this.cartService.addToCart(dto, user.userId);

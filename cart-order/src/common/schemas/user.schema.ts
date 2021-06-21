@@ -11,11 +11,6 @@ export const UserSchema = new mongoose.Schema({
     required: false,
     maxlength: 32,
   },
-  email: {
-    type: String,
-    trim: true,
-    unique: true,
-  },
 
   created: { type: Date, default: Date.now },
 });
