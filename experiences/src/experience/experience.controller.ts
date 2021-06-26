@@ -56,4 +56,18 @@ export class ExperienceController {
 
     return await this.experiencesService.findOne(slug);
   }
+
+  @Delete(':slug')
+  async removeExperience(@Param('slug') slug: string) {
+    await this.experiencesService.deleteExperience(slug);
+    return 'experience deleted';
+  }
+
+  @Put(':slug')
+  async updateExperience(
+    @Param('slug') slug: string,
+    @Body() dto: ExperienceDto,
+  ): Promise<Experience> {
+    return await this.experiencesService.updateExperience(slug, dto);
+  }
 }

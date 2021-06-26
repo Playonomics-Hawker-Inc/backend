@@ -41,6 +41,23 @@ export class ExperienceService {
     );
   }
 
+  async deleteExperience(slug: string) {
+    await this.experiencesModel.deleteOne({ slug: slug }).exec();
+  }
+
+  // update experience
+
+  async updateExperience(
+    slug: string,
+    dto: ExperienceDto,
+  ): Promise<Experience> {
+    const experience = await this.experiencesModel.findOne({
+      slug: slug.toString(),
+    });
+    await experience.updateOne(dto);
+    return await await this.experiencesModel.findOne({ slug: slug.toString() });
+  }
+
   /**
    *
    * @param query
@@ -91,14 +108,14 @@ export class ExperienceService {
     const removeFields = ['select', 'sort', 'page', 'limit'];
 
     // Loop over removeFields and delete them from reqQuery
-    removeFields.forEach((param) => delete reqQuery[param]);
+    removeFields.forEach(param => delete reqQuery[param]);
 
     // Create query string
     let queryStr = JSON.stringify(reqQuery);
     // Create operators ($gt, $gte, etc)
     queryStr = queryStr.replace(
       /\b(gt|gte|lt|lte|in)\b/g,
-      (match) => `$${match}`,
+      match => `$${match}`,
     );
 
     const pagination = {};
