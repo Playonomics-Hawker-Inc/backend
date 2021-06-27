@@ -256,7 +256,7 @@ docker build -f Dockerfile.ec2 -t playonomics/admin .
 docker container run -p 3001:3000 -d --rm --name admin public.ecr.aws/l6h5v1n2/playonomics/admin
 
 docker build -f Dockerfile.ec2 -t playonomics/ui .
-docker container run -p 5000:5000 -d --rm --name ui --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/ui
+docker container run -p 5000:3000 -d --rm --name ui public.ecr.aws/l6h5v1n2/playonomics/ui
 
 docker container run -p 5000:5000 -d --rm --name ui playonomics/ui
 

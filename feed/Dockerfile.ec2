@@ -5,8 +5,8 @@ WORKDIR /usr/src/app
 ENV NODE_ENV=production
 ENV PORT=6001
 ENV EUREKA_URI=http://playonomics:playonomics@pleureka:1111/eureka
-ENV HOST_NAME=plexperiences
-ENV APP_NAME=experiences
+ENV HOST_NAME=plfeed
+ENV APP_NAME=feed
 ENV ENABLE_HEART_BEAT=true
 ENV REGISTER_WITH_EUREKA=true
 

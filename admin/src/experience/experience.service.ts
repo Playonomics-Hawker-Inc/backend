@@ -13,18 +13,42 @@ export class ExperienceService {
     @InjectModel('Category') private categoryModel: Model<Category>,
   ) {}
 
+  /**
+   * Create a new experience
+   * @param dto
+   * @returns
+   */
   async createExperience(dto: ExperienceDto): Promise<Experience> {
-    const category = await this.categoryModel.findOne({
-      slug: dto.category.toString(),
-    });
+    // find the category to tag it to the experience
+    const category = await this.categoryModel.findById(dto.category.toString());
 
-    console.log('category', category);
     dto.category = {
       _id: category._id,
       name: category.name,
       slug: category.slug,
     };
     return await new this.experiencesModel(dto).save();
+  }
+
+  /**
+   *
+   * @param slug
+   * @param dto
+   * @returns
+   */
+  async updateExperience(dto: ExperienceDto): Promise<Experience> {
+    const experience = await this.experiencesModel.findOne({
+      slug: dto.slug.toString(),
+    });
+    const category = await this.categoryModel.findById(dto.category.toString());
+
+    dto.category = {
+      _id: category._id,
+      name: category.name,
+      slug: category.slug,
+    };
+    await experience.updateOne(dto);
+    return await await this.experiencesModel.findById(dto._id);
   }
 
   /**
