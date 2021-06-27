@@ -28,8 +28,6 @@ export class SessionService {
       )
       .toPromise();
 
-    console.log('session response', response);
-
     return response.data;
   }
 

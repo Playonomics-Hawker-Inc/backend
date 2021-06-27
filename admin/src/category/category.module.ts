@@ -9,7 +9,7 @@ import { SessionService } from '../session/session.service';
   imports: [
     MongooseModule.forFeature(
       [{ name: 'Category', schema: CategorySchema }],
-      'experience',
+      'feed',
     ),
     HttpModule,
   ],

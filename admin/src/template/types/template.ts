@@ -4,7 +4,7 @@ export interface Template extends Document {
   id: string;
   title: string;
   components: [Component];
-  experience: string;
+  experience: any;
 }
 
 export interface Component extends Document {

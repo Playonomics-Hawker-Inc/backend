@@ -26,8 +26,8 @@ import { SessionModule } from './session/session.module';
       useFindAndModify: false,
       useUnifiedTopology: true,
     }),
-    MongooseModule.forRoot(process.env.EXPERIENCE, {
-      connectionName: 'experience',
+    MongooseModule.forRoot(process.env.FEED, {
+      connectionName: 'feed',
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,
