@@ -7,6 +7,7 @@ import { CartModule } from './cart/cart.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './common/user.module';
 import { SessionModule } from './session/session.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { SessionModule } from './session/session.module';
     AuthModule,
     UserModule,
     SessionModule,
+    PaymentModule
   ],
   controllers: [AppController],
   providers: [AppService],
