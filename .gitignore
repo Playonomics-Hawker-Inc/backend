@@ -9,6 +9,7 @@
 
 /admin/dist
 /admin/dist
+/experiences/dist
 /communities/dist
 /feed/dist
 /profile/dist
@@ -26,8 +27,9 @@
 /profile/.env
 /skills/.env
 /cart-order/.env
-
+/experiences/.env
 .DS_Store
 
 /rabbit/data
 /rabbit/logs
+node_modules
