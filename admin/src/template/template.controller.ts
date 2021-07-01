@@ -22,8 +22,17 @@ export class TemplateController {
   constructor(private readonly templateService: TemplateService) {}
 
   @Post()
-  async createCategory(@Body() dto: TemplateDto): Promise<Template> {
+  async createTemplate(@Body() dto: TemplateDto): Promise<Template> {
     return await this.templateService.createTemplate(dto);
+  }
+  /**
+   *
+   * @param dto
+   * @returns
+   */
+  @Put()
+  async updateTemplate(@Body() dto: TemplateDto): Promise<Template> {
+    return await this.templateService.updateTemplate(dto);
   }
 
   @Get('details')

@@ -25,6 +25,18 @@ export class TemplateService {
   }
 
   /**
+   *
+   * @param slug
+   * @param dto
+   * @returns
+   */
+  async updateTemplate(dto: TemplateDto): Promise<Template> {
+    const templete = await this.templateModel.findById(dto._id);
+    await templete.updateOne(dto);
+    return await this.templateModel.findById(dto._id);
+  }
+
+  /**
    * Create a default template when a new experience is created
    * @param dto
    */
