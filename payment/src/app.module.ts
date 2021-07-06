@@ -3,10 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CartModule } from './cart/cart.module';
-import { AuthModule } from './auth/auth.module';
-import { UserModule } from './common/user.module';
-import { SessionModule } from './session/session.module';
+
 import { PaymentModule } from './payment/payment.module';
 
 @Module({
@@ -18,10 +15,7 @@ import { PaymentModule } from './payment/payment.module';
       useFindAndModify: false,
       useUnifiedTopology: true,
     }),
-    CartModule,
-    AuthModule,
-    UserModule,
-    SessionModule,
+ 
     PaymentModule
   ],
   controllers: [AppController],
