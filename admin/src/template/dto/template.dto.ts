@@ -7,6 +7,6 @@ export class ComponentsDto {
 export class TemplateDto {
   _id: string;
   title: string;
-  components: ComponentsDto[];
+  components: any[];
   experience: any;
 }

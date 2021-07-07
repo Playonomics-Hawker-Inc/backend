@@ -26,6 +26,16 @@ export class TemplateController {
     return await this.templateService.createTemplate(dto);
   }
 
+  @Put()
+  async editTemplate(@Body() dto: TemplateDto) {
+    return await this.templateService.editTemplate(dto);
+  }
+
+  @Post('/activate')
+  async setAsDefault(@Body() dto: TemplateDto) {
+    return await this.templateService.setAsDefault(dto);
+  }
+
   @Get('details')
   async getTemplate(
     @Query('slug') slug,

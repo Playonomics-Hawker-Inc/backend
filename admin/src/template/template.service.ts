@@ -25,6 +25,32 @@ export class TemplateService {
   }
 
   /**
+   *
+   * @param dto
+   */
+  async editTemplate(dto: TemplateDto) {
+    // map the components with attributes map
+    const template = await this.templateModel.findOne({ _id: dto._id });
+
+    dto.components.map((component) => {
+      component.attributesMap = new Map(JSON.parse(component.attributesMap));
+    });
+
+    await template.updateOne(dto);
+  }
+
+  async setAsDefault(dto: TemplateDto) {
+    // map the components with attributes map
+    const template = await this.templateModel.findOne({ _id: dto._id });
+
+    dto.components.map((component) => {
+      component.attributesMap = new Map(JSON.parse(component.attributesMap));
+    });
+
+    await template.updateOne(dto);
+  }
+
+  /**
    * Create a default template when a new experience is created
    * @param dto
    */
