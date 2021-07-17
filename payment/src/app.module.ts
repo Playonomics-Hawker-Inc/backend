@@ -3,8 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-
 import { PaymentModule } from './payment/payment.module';
+
+import { OrderModule } from './order/order.module';
+import { PurchaseModule } from './purchase/purchase.module';
 
 @Module({
   imports: [
@@ -16,7 +18,7 @@ import { PaymentModule } from './payment/payment.module';
       useUnifiedTopology: true,
     }),
  
-    PaymentModule
+    PaymentModule,OrderModule,PurchaseModule
   ],
   controllers: [AppController],
   providers: [AppService],
