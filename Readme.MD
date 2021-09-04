@@ -19,7 +19,7 @@ docker network create -d bridge playonomics_net
 docker build -t playonomics/eureka .
 docker container run -p 1111:1111 -d --rm --name pleureka --network playonomics_net playonomics/eureka
 
-# PROD
+# FARGATE
 
 # Enironment variables
 
@@ -37,11 +37,12 @@ docker container run -p 1111:1111 -d --rm --name hfeureka playonomics/eureka
 
 # EC2
 
-# Enironment variables
+# Docker build
 
 docker build -f Dockerfile.ec2 -t playonomics/eureka-ec2 .
-docker image tag public.ecr.aws/f1c3k5e1/playonomics/eureka-ec2:latest playonomics/eureka-ec2:latest
-docker container run -p 1111:1111 -d --rm --name pleureka --network playonomics_net playonomics/eureka-ec2
+
+docker pull public.ecr.aws/l6h5v1n2/playonomics/eureka-ec2
+docker container run -p 1111:1111 -d --rm --name pleureka --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/eureka-ec2
 
 # ** ------------------------------ **
 
@@ -60,7 +61,7 @@ docker container run -p 1111:1111 -d --rm --name pleureka --network playonomics_
 docker build -t playonomics/gatwway .
 docker container run -p 8080:8080 -d --rm --name plgateway --network playonomics_net playonomics/gatwway
 
-# PROD - Config
+# Fargate - Config
 
 # Enironment variable
 
@@ -79,15 +80,31 @@ docker container run -p 8080:8080 -d --rm --name hfgatwway playonomics/gateway
 
 # EC2
 
-# Enironment variables
-
 docker build -f Dockerfile.ec2 -t playonomics/gateway-ec2 .
-docker image tag public.ecr.aws/f1c3k5e1/playonomics/gateway-ec2:latest playonomics/gateway-ec2:latest
-docker container run -p 8080:8080 -d --rm --name plgateway --network playonomics_net playonomics/gateway-ec2
+docker pull public.ecr.aws/l6h5v1n2/playonomics/gateway-ec2
+docker container run -p 8080:8080 -d --rm --name plgateway --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/gateway-ec2
 
 # ** ------------------------------ ** ------------------------------ \*\*
 
 ## GATEWAY - Gateway Server - END
+
+# ** ------------------------------ ** ------------------------------ \*\*
+
+# ** ------------------------------ ** ------------------------------ \*\*
+
+## SESSION - Sesssion Store - START
+
+# ** ------------------------------ ** ------------------------------ \*\*
+
+# EC2
+
+docker build -f Dockerfile.ec2 -t playonomics/session-ec2 .
+docker pull public.ecr.aws/l6h5v1n2/playonomics/session-ec2
+docker container run -p 8000:8000 -d --rm --name plsession --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/session-ec2
+
+# ** ------------------------------ ** ------------------------------ \*\*
+
+## SESSION - Sesssion End - END
 
 # ** ------------------------------ ** ------------------------------ \*\*
 
@@ -123,8 +140,8 @@ docker container run -p 6006:6006 -d --rm --name plauth playonomics/auth
 # Enironment variables
 
 docker build -f Dockerfile.ec2 -t playonomics/auth-ec2 .
-docker image tag public.ecr.aws/f1c3k5e1/playonomics/auth-ec2:latest playonomics/auth-ec2:latest
-docker container run -p 6006:6006 -d --rm --name plauth --network playonomics_net playonomics/auth-ec2
+docker pull public.ecr.aws/l6h5v1n2/playonomics/auth-ec2
+docker container run -p 6006:6006 -d --rm --name plauth --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/auth-ec2
 
 # ** ------------------------------ **
 
@@ -183,15 +200,15 @@ server
 {
 listen 80;
 listen [::]:80;
-server_name playonomics-api.hawkerlabs.com www.playonomics-api.hawkerlabs.com.com;
+server_name playonomics-api.hawkerlabs.com www.playonomics-api.hawkerlabs.com;
 
     location /
     {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://127.0.0.1:7070;
     }
 
 }
-
+sudo service nginx status
 sudo service nginx restart
 
 sudo service nginx start
@@ -210,3 +227,61 @@ experiences - 6001
 cart-order - 6002
 
 yarn add mongoose passport passport-jwt playonomics-lib bcryptjs @nestjs/config @nestjs/mongoose @nestjs/passport
+
+docker stop pleureka
+docker stop plgateway
+docker stop plsession
+docker stop plauth
+
+## Build (Backend)
+
+docker build -f Dockerfile.ec2 -t playonomics/gateway-ec2 .
+docker build -f Dockerfile.ec2 -t playonomics/session-ec2 .
+docker build -f Dockerfile.ec2 -t playonomics/auth-ec2 .
+docker build -f Dockerfile.ec2 -t playonomics/admin-ec2 .
+docker build -f Dockerfile.ec2 -t playonomics/experiences-ec2 .
+docker build -f Dockerfile.ec2 -t playonomics/cart-order-ec2 .
+
+docker container run -p 1111:1111 -d --rm --name pleureka --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/eureka-ec2
+docker container run -p 8080:8080 -d --rm --name plgateway --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/gateway-ec2
+docker container run -p 8000:8000 -d --rm --name plsession --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/session-ec2
+docker container run -p 6006:6006 -d --rm --name plauth --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/auth-ec2
+docker container run -p 6005:6005 -d --rm --name pladmin --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/admin-ec2
+docker container run -p 6001:6001 -d --rm --name plexperiences --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/experiences-ec2
+docker container run -p 6002:6002 -d --rm --name plcart-order --network playonomics_net public.ecr.aws/l6h5v1n2/playonomics/cart-order-ec2
+
+## Build (Frontend)
+
+docker build -f Dockerfile.ec2 -t playonomics/admin .
+docker container run -p 3001:3000 -d --rm --name admin public.ecr.aws/l6h5v1n2/playonomics/admin
+
+docker build -f Dockerfile.ec2 -t playonomics/ui .
+docker container run -p 5000:3000 -d --rm --name ui public.ecr.aws/l6h5v1n2/playonomics/ui
+
+docker container run -p 5000:5000 -d --rm --name ui playonomics/ui
+
+server
+{
+listen 80;
+listen [::]:80;
+server_name pladmin.hawkerlabs.com www.pladmin.hawkerlabs.com;
+
+    location /
+    {
+        proxy_pass http://127.0.0.1:3001;
+    }
+
+}
+
+server
+{
+listen 80;
+listen [::]:80;
+server_name playonomics.hawkerlabs.com www.playonomics.hawkerlabs.com;
+
+    location /
+    {
+        proxy_pass http://127.0.0.1:5000;
+    }
+
+}

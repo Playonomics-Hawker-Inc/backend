@@ -91,7 +91,7 @@ export class ImageService {
   upload = multer({
     storage: multerS3({
       s3: s3,
-      bucket: 'playonomics',
+      bucket: 'playonomics-dev',
       contentType: multerS3.AUTO_CONTENT_TYPE,
       acl: 'public-read',
 

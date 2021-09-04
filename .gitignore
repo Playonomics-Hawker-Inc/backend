@@ -1,7 +1,7 @@
 /admin/node_modules
 /auth/node_modules
 /communities/node_modules
-/experiences/node_modules
+/feed/node_modules
 /profile/node_modules
 /skills/node_modules
 /playonomics-lib/node_modules
@@ -9,8 +9,9 @@
 
 /admin/dist
 /admin/dist
-/communities/dist
 /experiences/dist
+/communities/dist
+/feed/dist
 /profile/dist
 /skills/dist
 /playonomics-lib/dist
@@ -22,12 +23,13 @@
 /admin/.env
 /auth/.env
 /communities/.env
-/experiences/.env
+/feed/.env
 /profile/.env
 /skills/.env
 /cart-order/.env
-
+/experiences/.env
 .DS_Store
 
 /rabbit/data
 /rabbit/logs
+node_modules

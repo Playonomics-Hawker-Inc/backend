@@ -1,0 +1,48 @@
+FROM node:alpine
+
+# Create app directory
+WORKDIR /usr/src/app
+ENV NODE_ENV=production
+ENV PORT=6001
+ENV EUREKA_URI=http://playonomics:playonomics@pleureka:1111/eureka
+ENV HOST_NAME=plfeed
+ENV APP_NAME=feed
+ENV ENABLE_HEART_BEAT=true
+ENV REGISTER_WITH_EUREKA=true
+
+
+ENV DATABASE=mongodb+srv://playonomics:playonomics@cluster0.vgnor.mongodb.net/experiences-dev?retryWrites=true&w=majority
+
+
+ENV SESSION_END_POINT=http://plgateway:8080/session/v1
+ENV JWT_SECRET=amsn2idgvaodyweidhewfsdcacdjkbsdlkbwlkchbsldhcbsdcksasjba;skjdaksjdaskjdgasdasdasdasd
+ENV JWT_EXPIRE=30d
+ENV JWT_COOKIE_EXPIRE=30
+
+ENV AWS_BUCKET_NAME=playonomics-dev
+ENV CLOUD_FRONT_URL=https://d14tvb6blfomfj.cloudfront.net
+ENV AWS_REGION=ap-south-1
+ENV AWS_ACCESS_KEY_ID=AKIAR6FMYM7CD4XYK3YA
+ENV AWS_SECRET_ACCESS_KEY=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
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# Copy our custom tsconfig
+# where available (npm@5+)
+COPY package*.json ./
+COPY tsconfig*.json ./
+COPY .npmrc ./
+# Copy the src bundle
+COPY . .
+
+# Install dependencies
+RUN npm install
+RUN npm i -g @nestjs/cli
+
+
+RUN npm run build
+
+
+EXPOSE 6001
+#The server is generated under dist as per the tsconfig, hence the command
+CMD ["node", "dist/main"]

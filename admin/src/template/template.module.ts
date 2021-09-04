@@ -14,11 +14,12 @@ import { SessionService } from '../session/session.service';
         { name: 'Experience', schema: ExperienceSchema },
         { name: 'Template', schema: TemplateSchema },
       ],
-      'experience',
+      'feed',
     ),
     HttpModule,
   ],
   providers: [TemplateService, SessionService],
   controllers: [TemplateController],
+  exports: [TemplateService],
 })
 export class TemplateModule {}

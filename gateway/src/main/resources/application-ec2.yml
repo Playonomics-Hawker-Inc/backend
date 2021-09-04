@@ -20,7 +20,7 @@ spring:
 
 eureka:
   instance:
-    hostname: pleureka
+    hostname: plgateway
   client:
     registerWithEureka: true
     fetchRegistry: true

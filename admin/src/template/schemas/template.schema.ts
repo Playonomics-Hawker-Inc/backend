@@ -31,7 +31,7 @@ export const TemplateSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ['active', 'inactive'],
-    default: 'inactive',
+    default: 'active',
   },
   experience: {
     _id: {

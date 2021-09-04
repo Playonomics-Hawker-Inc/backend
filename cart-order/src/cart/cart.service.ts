@@ -125,7 +125,6 @@ export class CartService {
       return experience._id.toString() != dto.experiences[0]._id.toString();
     });
 
-    console.log('filtered', filtered);
     userCart.experiences = filtered;
     //return updated cart
     return userCart;
